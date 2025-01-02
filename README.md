@@ -43,10 +43,16 @@
   - `git remote add origin https://github.com/your-username/Sork.git`
 - Push the changes to the remote repository
   - `git push -u origin main`
-- Create a prompt loop (`do while`)
+- Create a prompt loop
+  - `do { } while (true);`
+  - `Console.Write(" > ");`
+  - `string input = Console.ReadLine();`
 - Create a Laugh command
+  - `if (input == "laugh") { Console.WriteLine("Hahahaha"); }`
 - Create an Unknown response command
+  - `else { Console.WriteLine("Unknown command"); }`
 - Create an Exit command
+  - `else if (input == "exit") { break; }`
 
 ## Homework
 - Create 3 new emote commands : `dance`, `sing`, and `whistle`
