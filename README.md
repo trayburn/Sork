@@ -54,8 +54,34 @@
 - Create an Exit command
   - `else if (input == "exit") { break; }`
 
-## Homework
+### Homework
 - Create 3 new emote commands : `dance`, `sing`, and `whistle`
 
 
+
+## Lesson 2
+
+ - Introduce the concept of a command class
+   - `public class LaughCommand`
+ - Create an interface for Command classes
+   - `public interface ICommand`
+ - Implement the ICommand interface in the LaughCommand class
+   - `public class LaughCommand : ICommand`
+ - Ensure that the `Execute` method returns a `CommandResult`
+   - CommandResult is a class with a `RequestExit` property and a `IsHandled` property
+ - Repeat for `ExitCommand`, `DanceCommand`, `SingCommand`, and `WhistleCommand`
+ - Modify `Main` to use a `List<ICommand>` to store the commands
+ - Abstract `Console` by creating a `Writer` and `Reader` class
+   - `Writer` should:
+     - `Prompt`
+     - `Write`
+     - `WriteLine`
+   - `Reader` should:
+     - `ReadLine`
+     - `ReadKey`
+- Update the Commands and Main to use the `Writer` and `Reader` classes
+- Extract a BaseCommand class from the Command classes
+  - Implment a Parse method that takes the user input and returns an Array.
+### Homework
+- Create 3 new emote commands : `dance`, `sing`, and `whistle`
 
