@@ -1,5 +1,12 @@
 # Lessons Plans
 
+## Rules of the Road
+- We're moving fast
+- Any amount of behind is too far behind, if I'm moving on and you're still working then **TELL ME**
+- There is no such thing as a stupid question, if you don't know then **ASK**
+- There will be homework each session for you to practice on.
+
+
 ## Lesson 1
 - Open the terminal:
   - `cd c:\`
