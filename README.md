@@ -82,6 +82,8 @@
 - Update the Commands and Main to use the `Writer` and `Reader` classes
 - Extract a BaseCommand class from the Command classes
   - Implment a Parse method that takes the user input and returns an Array.
+
+
 ### Homework
-- Create 3 new emote commands : `dance`, `sing`, and `whistle`
+- Move all classes and interfaces to their own files.
 
