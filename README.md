@@ -71,6 +71,13 @@
    - CommandResult is a class with a `RequestExit` property and a `IsHandled` property
  - Repeat for `ExitCommand`, `DanceCommand`, `SingCommand`, and `WhistleCommand`
  - Modify `Main` to use a `List<ICommand>` to store the commands
+
+
+### Homework
+- Move all classes and interfaces to their own files.
+
+## Lesson 3
+
  - Abstract `Console` by creating a `Writer` and `Reader` class
    - `Writer` should:
      - `Prompt`
@@ -84,6 +91,4 @@
   - Implment a Parse method that takes the user input and returns an Array.
 
 
-### Homework
-- Move all classes and interfaces to their own files.
 
