@@ -1,12 +1,12 @@
 namespace Sork.Commands;
 
-public class ExitCommand : ICommand
+public class ExitCommand : BaseCommand
 {  
     private readonly UserInputOutput io;
     public ExitCommand(UserInputOutput io)
     {
         this.io = io;
     }
-    public bool Handles(string userInput) => userInput == "exit";
-    public CommandResult Execute() => new CommandResult { RequestExit = true, IsHandled = true };
+    public override bool Handles(string userInput) => GetCommandFromInput(userInput) == "exit";
+    public override CommandResult Execute() => new CommandResult { RequestExit = true, IsHandled = true };
 }
