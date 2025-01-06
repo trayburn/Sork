@@ -78,6 +78,9 @@
 
 ## Lesson 3
 
+ - Introduce a namespace for the project
+   - `namespace Sork`
+ - Organize our files so Commands are in a Commands folder
  - Abstract `Console` by creating a `Writer` and `Reader` class
    - `Writer` should:
      - `Prompt`

@@ -1,4 +1,5 @@
-﻿public class Program
+﻿namespace Sork;
+public class Program
 {
     public static void Main(string[] args)
     {

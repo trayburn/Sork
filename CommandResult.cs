@@ -1,4 +1,4 @@
-
+namespace Sork;
 
 public class CommandResult
 {

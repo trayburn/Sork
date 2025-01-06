@@ -1,3 +1,4 @@
+namespace Sork;
 
 public class ExitCommand : ICommand
 {

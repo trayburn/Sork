@@ -1,3 +1,4 @@
+namespace Sork;
 public interface ICommand
 {
     bool Handles(string userInput);
