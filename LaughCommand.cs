@@ -1,3 +1,4 @@
+namespace Sork;
 public class LaughCommand : ICommand
 {
     public bool Handles(string userInput)
