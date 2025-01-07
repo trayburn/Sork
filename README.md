@@ -109,3 +109,10 @@
 ### Homework
 - Implement a `LookCommand` that allows the player to look around the room.
 
+## Lesson 5
+
+- Implement Microsoft.Extensions.DependencyInjection to register the commands and game state.
+- Update `Main` to use the dependency injection container to get the commands and game state.
+- Implement a UnitTest project to test the commands and game state.
+
+### Homework
