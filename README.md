@@ -81,17 +81,31 @@
  - Introduce a namespace for the project
    - `namespace Sork`
  - Organize our files so Commands are in a Commands folder
- - Abstract `Console` by creating a `Writer` and `Reader` class
-   - `Writer` should:
-     - `Prompt`
-     - `Write`
-     - `WriteLine`
-   - `Reader` should:
-     - `ReadLine`
-     - `ReadKey`
-- Update the Commands and Main to use the `Writer` and `Reader` classes
+ - Abstract `Console` by creating a `UserInputOutput` class
+     - `WriteNoun`
+     - `WriteMessage`
+     - `WriteMessageLine`
+     - `WritePrompt`
+     - `ReadInput`
+     - `ReadInputLine`
+- Update `LaughCommand` to use the `UserInputOutput` class
 - Extract a BaseCommand class from the Command classes
-  - Implment a Parse method that takes the user input and returns an Array.
+  - Implment a Parse method that takes the user input and returns the first word.
 
+### Homework
+- Implement all existing commands as BaseCommand classes.
 
+## Lesson 4
+
+- Change `Execute` to take the `userInput` as a parameter.
+- Modify `DanceCommand` to allow for a `noun` parameter
+- Modify `DanceCommand` to not handle anything with more than 1 parameter or 0 parameters.
+- Implement a `GameState` class that is aware of a `Player` and a `Room`
+- Initialize the `GameState` class in `Main`
+- Implement a `Room` class that has a `Name` and a `Description`
+- Implement a `Player` class that has a `Name` and a `Location`
+- Implement a `MoveCommand` that allows the player to move between rooms.
+
+### Homework
+- Implement a `LookCommand` that allows the player to look around the room.
 
