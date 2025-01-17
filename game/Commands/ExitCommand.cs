@@ -2,8 +2,8 @@ namespace Sork.Commands;
 using Sork.World;
 public class ExitCommand : BaseCommand
 {  
-    private readonly UserInputOutput io;
-    public ExitCommand(UserInputOutput io)
+    private readonly IUserInputOutput io;
+    public ExitCommand(IUserInputOutput io)
     {
         this.io = io;
     }

@@ -116,3 +116,19 @@
 - Implement a UnitTest project to test the commands and game state.
 
 ### Homework
+None
+
+## Lesson 6
+
+- Implemented a `TakeCommand` that allows the player to take an item. (eventually)
+- Added a `TestInputOutput` class to test the commands and game state.
+- Refactored the `UserInputOutput` class to be an interface `IUserInputOutput`.
+
+### Homework
+
+For all other commands, except `MoveCommand` and `LookCommand`, write the following tests:
+  - `Execute_ShouldOutputMessage`
+  - `Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided`
+  - `Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided`
+
+

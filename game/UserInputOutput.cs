@@ -1,6 +1,16 @@
 namespace Sork;
 
-public class UserInputOutput
+public interface IUserInputOutput
+{
+    void WritePrompt(string prompt);
+    void WriteMessage(string message);
+    void WriteNoun(string noun);
+    void WriteMessageLine(string message);
+    string ReadInput();
+    string ReadKey();
+}
+
+public class UserInputOutput : IUserInputOutput
 {
     public void WritePrompt(string prompt) 
     {

@@ -4,8 +4,8 @@ namespace Sork.Commands;
 
 public class LookCommand : BaseCommand
 {
-    private readonly UserInputOutput io;
-    public LookCommand(UserInputOutput io)
+    private readonly IUserInputOutput io;
+    public LookCommand(IUserInputOutput io)
     {
         this.io = io;
     }
