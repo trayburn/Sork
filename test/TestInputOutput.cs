@@ -11,12 +11,12 @@ public class TestInputOutput : IUserInputOutput
 
     public string ReadKey()
     {
-        throw new NotImplementedException();
+        return "";
     }
 
     public void WriteMessage(string message)
     {
-        throw new NotImplementedException();
+        Outputs.Add(message);
     }
 
     public void WriteMessageLine(string message)
@@ -26,7 +26,7 @@ public class TestInputOutput : IUserInputOutput
 
     public void WriteNoun(string noun)
     {
-        throw new NotImplementedException();
+        Outputs.Add(noun);
     }
 
     public void WritePrompt(string prompt)
