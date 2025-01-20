@@ -132,3 +132,13 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
   - `Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided`
 
 
+## Lesson 7
+
+- Add `Item` class to the `World` namespace.
+- Add `Inventory` class to the `Player` class.
+- Seed a sword into the Tavern room.
+- Implement a `TakeCommand` that allows the player to pick up the sword.
+- Update the `LookCommand` to show the player the inventory of the tavern.
+
+### Homework
+- Implement a `DropCommand` that allows the player to drop the sword.
