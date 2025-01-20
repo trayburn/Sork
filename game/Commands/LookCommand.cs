@@ -26,6 +26,13 @@ public class LookCommand : BaseCommand
         {
             io.WriteMessageLine($"{exit.Key} - {exit.Value.Description}");
         }
+        io.WriteMessageLine("");
+        io.WriteMessageLine("Inventory:");
+        foreach (var item in gameState.Player.Location.Inventory)
+        {
+            io.WriteMessageLine($"{item.Name} - {item.Description}");
+        }
+
 
         return new CommandResult { RequestExit = false, IsHandled = true };
     }

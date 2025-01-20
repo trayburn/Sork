@@ -23,6 +23,16 @@ public class TakeCommand : BaseCommand
             return new CommandResult() { IsHandled = false, RequestExit = false};
         }
 
+        var item = gameState.Player.Location.Inventory.FirstOrDefault(item => item.Name.ToLower() == parameters[0].ToLower());
+        if (item == null)
+        {
+            io.WriteMessageLine("You don't see that item here.");
+            return new CommandResult() { IsHandled = false, RequestExit = false};
+        }
+
+        gameState.Player.Inventory.Add(item);
+        gameState.Player.Location.Inventory.Remove(item);
+
         return new CommandResult() { IsHandled = true, RequestExit = false};
     }
 }
