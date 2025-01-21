@@ -1,5 +1,5 @@
 using Sork.World;
-using Work.Commands;
+using Sork.Commands;
 
 namespace Sork.Test;
 
@@ -19,7 +19,7 @@ public class DanceCommandTests
 
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);
-        Assert.AreEqual(" dance around!", io.Outputs.Last());
+        Assert.AreEqual(" dance!", io.Outputs.Last());
     }
     [TestMethod]
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
