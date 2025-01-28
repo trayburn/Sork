@@ -5,9 +5,11 @@ namespace Sork.Commands;
 public class LookCommand : BaseCommand
 {
     private readonly IUserInputOutput io;
-    public LookCommand(IUserInputOutput io)
+    private readonly GameState gameState;
+    public LookCommand(IUserInputOutput io, GameState gameState)
     {
         this.io = io;
+        this.gameState = gameState;
     }
 
     public override bool Handles(string userInput)
@@ -15,20 +17,20 @@ public class LookCommand : BaseCommand
         return GetCommandFromInput(userInput) == "look";
     }
 
-    public override CommandResult Execute(string userInput, GameState gameState)
+    public override CommandResult Execute(string userInput, Player player)
     {
-        io.WriteNoun(gameState.Player.Location.Name);
+        io.WriteNoun(player.Location.Name);
         io.WriteMessageLine("");
-        io.WriteMessageLine(gameState.Player.Location.Description);
+        io.WriteMessageLine(player.Location.Description);
         io.WriteMessageLine("");
         io.WriteMessageLine("Exits:");
-        foreach (var exit in gameState.Player.Location.Exits)
+        foreach (var exit in player.Location.Exits)
         {
             io.WriteMessageLine($"{exit.Key} - {exit.Value.Description}");
         }
         io.WriteMessageLine("");
         io.WriteMessageLine("Inventory:");
-        foreach (var item in gameState.Player.Location.Inventory)
+        foreach (var item in player.Location.Inventory)
         {
             io.WriteMessageLine($"{item.Name} - {item.Description}");
         }

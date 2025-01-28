@@ -14,7 +14,7 @@ public class TakeCommand : BaseCommand
         return GetCommandFromInput(userInput) == "take";
     }
 
-    public override CommandResult Execute(string userInput, GameState gameState)
+    public override CommandResult Execute(string userInput, Player player)
     {
         var parameters = GetParametersFromInput(userInput);
         if (parameters.Length == 0)
@@ -23,15 +23,15 @@ public class TakeCommand : BaseCommand
             return new CommandResult() { IsHandled = false, RequestExit = false};
         }
 
-        var item = gameState.Player.Location.Inventory.FirstOrDefault(item => item.Name.ToLower() == parameters[0].ToLower());
+        var item = player.Location.Inventory.FirstOrDefault(item => item.Name.ToLower() == parameters[0].ToLower());
         if (item == null)
         {
             io.WriteMessageLine("You don't see that item here.");
             return new CommandResult() { IsHandled = false, RequestExit = false};
         }
 
-        gameState.Player.Inventory.Add(item);
-        gameState.Player.Location.Inventory.Remove(item);
+        player.Inventory.Add(item);
+        player.Location.Inventory.Remove(item);
 
         return new CommandResult() { IsHandled = true, RequestExit = false};
     }

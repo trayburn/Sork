@@ -11,15 +11,18 @@ public class Program
     public static async Task Main(string[] args)
     {
         var networkGame = new NetworkGame();
-        networkGame.ClientConnected += (sender, e) => RunGame(networkGame, e.Client);
+        var gameState = GameState.Create();
+        networkGame.ClientConnected += (sender, e) => {
+            Task.Run(() => RunGame(networkGame, e.Client, gameState));
+        };
         await networkGame.StartListening();
     }
 
-    public static void RunGame(NetworkGame networkGame, TcpClient client)
+    public static void RunGame(NetworkGame networkGame, TcpClient client, GameState gameState)
     {
         var services = new ServiceCollection();
         services.AddSingleton<IUserInputOutput, NetworkInputOutput>(sp => new NetworkInputOutput(client));
-        services.AddSingleton<GameState>(sp => GameState.Create(sp.GetRequiredService<IUserInputOutput>()));
+        services.AddSingleton<GameState>(sp => gameState);
         var commandTypes = typeof(ICommand).Assembly.GetTypes()
             .Where(t => typeof(ICommand).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract);
 
@@ -29,9 +32,13 @@ public class Program
         }
         var provider = services.BuildServiceProvider();
 
-        var gameState = provider.GetRequiredService<GameState>();
         var commands = provider.GetServices<ICommand>().ToList();
         var io = provider.GetRequiredService<IUserInputOutput>();
+
+        io.WritePrompt("What is your name? ");
+        string name = io.ReadInput();
+        var player = new Player { Name = name, Location = gameState.RootRoom };
+        gameState.Players.Add(player);
 
         do
         {
@@ -45,7 +52,7 @@ public class Program
                 if (command.Handles(input)) 
                 {
                     handled = true;
-                    result = command.Execute(input, gameState);
+                    result = command.Execute(input, player);
                     if (result.RequestExit) { break; } 
                 }
             }

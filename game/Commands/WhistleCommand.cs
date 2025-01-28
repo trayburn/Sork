@@ -10,7 +10,7 @@ public class WhistleCommand : BaseCommand
         this.io = io;
     }
     public override bool Handles(string userInput) => GetCommandFromInput(userInput) == "whistle";
-    public override CommandResult Execute(string userInput, GameState gameState)
+    public override CommandResult Execute(string userInput, Player player)
     {
         io.WriteNoun("You");
         io.WriteMessageLine(" whistle!");

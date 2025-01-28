@@ -15,15 +15,18 @@ public class NetworkGame
         listener = new TcpListener(IPAddress.Any, Port);
         listener.Start();
 
-        try
+        while (true)
         {
-            
-            TcpClient client = await listener.AcceptTcpClientAsync();
-            OnClientConnected(new ClientConnectedEventArgs(client));
-        }
-        catch (Exception)
-        {
-            // Handle exceptions
+            try
+            {
+                Console.WriteLine("Waiting for client connection...");
+                TcpClient client = await listener.AcceptTcpClientAsync();
+                OnClientConnected(new ClientConnectedEventArgs(client));
+            }
+            catch (Exception)
+            {
+                // Handle exceptions
+            }
         }
     }
 

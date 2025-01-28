@@ -11,7 +11,7 @@ public class DanceCommand : BaseCommand
         var paramsLength = GetParametersFromInput(userInput).Length;
         return GetCommandFromInput(userInput) == "dance" && (paramsLength == 0 || paramsLength == 1);
     }
-    public override CommandResult Execute(string userInput, GameState gameState) 
+    public override CommandResult Execute(string userInput, Player player) 
     { 
         var parameters = GetParametersFromInput(userInput);
         if (parameters.Length == 0) {

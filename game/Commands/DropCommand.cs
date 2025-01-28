@@ -15,7 +15,7 @@ public class DropCommand : BaseCommand
         return GetCommandFromInput(userInput) == "drop";
     }
 
-    public override CommandResult Execute(string userInput, GameState gameState)
+    public override CommandResult Execute(string userInput, Player player)
     {
         var parameters = GetParametersFromInput(userInput);
         if (parameters.Count() != 1)
@@ -25,7 +25,7 @@ public class DropCommand : BaseCommand
         }
         var noun = parameters[0];
 
-        var item = gameState.Player.Inventory.FirstOrDefault(i => 
+        var item = player.Inventory.FirstOrDefault(i => 
             i.Name.Equals(noun, StringComparison.OrdinalIgnoreCase));
 
         if (item == null)
@@ -34,8 +34,8 @@ public class DropCommand : BaseCommand
             return new CommandResult { RequestExit = false, IsHandled = true };
         }
 
-        gameState.Player.Inventory.Remove(item);
-        gameState.Player.Location.Inventory.Add(item);
+        player.Inventory.Remove(item);
+        player.Location.Inventory.Add(item);
         io.WriteMessageLine($"You dropped the {item.Name}.");
 
         return new CommandResult { RequestExit = false, IsHandled = true };

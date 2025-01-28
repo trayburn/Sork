@@ -40,7 +40,7 @@ public class NetworkInputOutput : IUserInputOutput
 
     public string ReadInput()
     {
-        return reader.ReadLine()?.Trim() ?? "";
+        return reader.ReadLine()?.NetworkCleanup()?.Trim() ?? "";
     }
 
     public string ReadKey()
