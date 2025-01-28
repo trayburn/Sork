@@ -154,6 +154,6 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
 
 ## Lesson 9
 
-- Handling backspace
+- Handling backspace via Extension methods on `string`
 - Allow for multiple players to connect to the game.
 
