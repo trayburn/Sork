@@ -142,3 +142,18 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
 
 ### Homework
 - Implement a `DropCommand` that allows the player to drop the sword.
+
+## Lesson 8
+
+- Implement `NetworkInputOutput` class to handle network communication.
+- Add `ClientConnectedEventArgs` class to handle the event when a client connects.
+- Create `NetworkGame` to handle player connecting via TCP.
+
+### Homework
+- Ensure you have the exact code from Tim's repository for `NetworkGame` and `NetworkInputOutput`.
+
+## Lesson 9
+
+- Handling backspace
+- Allow for multiple players to connect to the game.
+
