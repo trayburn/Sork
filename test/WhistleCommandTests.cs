@@ -11,11 +11,12 @@ public sealed class WhistleCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
         var command = new WhistleCommand(io);
-        var gameState = GameState.Create(io);
 
         // Act
-        command.Execute("whistle", gameState);
+            command.Execute("whistle", player);
 
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);

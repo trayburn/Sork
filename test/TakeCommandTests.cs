@@ -25,16 +25,17 @@ public sealed class TakeCommandTests
         // Arrange
         var io = new TestInputOutput();
         var command = new TakeCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        var result = command.Execute("TAKE sword", gameState);
+        var result = command.Execute("TAKE sword", player);
 
         // Assert
         Assert.IsTrue(result.IsHandled);
         Assert.IsFalse(result.RequestExit);
-        Assert.AreEqual(1, gameState.Player.Inventory.Count);
-        Assert.AreEqual("Sword", gameState.Player.Inventory[0].Name);
+        Assert.AreEqual(1, player.Inventory.Count);
+        Assert.AreEqual("Sword", player.Inventory[0].Name);
     }
 
     [TestMethod]
@@ -42,16 +43,17 @@ public sealed class TakeCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
+        var gameState = GameState.Create();
         var command = new TakeCommand(io);
-        var gameState = GameState.Create(io);
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        var result = command.Execute("TAKE candle", gameState);
+        var result = command.Execute("TAKE candle", player);
 
         // Assert
         Assert.IsFalse(result.IsHandled);
         Assert.IsFalse(result.RequestExit);
-        Assert.AreEqual(0, gameState.Player.Inventory.Count);
+        Assert.AreEqual(0, player.Inventory.Count);
         Assert.AreEqual(1, io.Outputs.Count);
         Assert.AreEqual("You don't see that item here.", io.Outputs[0]);
     }
@@ -62,10 +64,11 @@ public sealed class TakeCommandTests
         // Arrange
         var io = new TestInputOutput();
         var command = new TakeCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        var result = command.Execute("TAKE", gameState);
+        var result = command.Execute("TAKE", player);
 
         // Assert
         Assert.AreEqual(1, io.Outputs.Count);

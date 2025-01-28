@@ -12,10 +12,11 @@ public class DanceCommandTests
         // Arrange
         var io = new TestInputOutput();
         var command = new DanceCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        command.Execute("dance", gameState);
+        command.Execute("dance", player);
 
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);

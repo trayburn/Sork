@@ -24,11 +24,13 @@ public class DropCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
+        var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var gameState = GameState.Create(io);
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+
 
         // Act
-        var result = command.Execute("drop", gameState);
+        var result = command.Execute("drop", player);
 
         // Assert
         Assert.IsTrue(result.IsHandled);
@@ -41,11 +43,12 @@ public class DropCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
+        var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var gameState = GameState.Create(io);
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        var result = command.Execute("drop nonexistent", gameState);
+        var result = command.Execute("drop nonexistent", player);
 
         // Assert
         Assert.IsTrue(result.IsHandled);
@@ -58,20 +61,21 @@ public class DropCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
+        var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var gameState = GameState.Create(io);
-        var sword = gameState.Player.Location.Inventory.First(i => i.Name == "Sword");
-        gameState.Player.Location.Inventory.Remove(sword);
-        gameState.Player.Inventory.Add(sword);
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var sword = player.Location.Inventory.First(i => i.Name == "Sword");
+        player.Location.Inventory.Remove(sword);
+        player.Inventory.Add(sword);
 
         // Act
-        var result = command.Execute("drop Sword", gameState);
+        var result = command.Execute("drop Sword", player);
 
         // Assert
         Assert.IsTrue(result.IsHandled);
         Assert.IsFalse(result.RequestExit);
         Assert.AreEqual("You dropped the Sword.", io.Outputs.Last());
-        Assert.IsFalse(gameState.Player.Inventory.Any(i => i.Name == "Sword"));
-        Assert.IsTrue(gameState.Player.Location.Inventory.Any(i => i.Name == "Sword"));
+        Assert.IsFalse(player.Inventory.Any(i => i.Name == "Sword"));
+        Assert.IsTrue(player.Location.Inventory.Any(i => i.Name == "Sword"));
     }
 }

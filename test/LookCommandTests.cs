@@ -10,7 +10,8 @@ public sealed class LookCommandTests
     public void Handle_ShouldReturnTrue_WhenInputIsCapitalized()
     {
         // Arrange
-        var command = new LookCommand(new UserInputOutput());
+        var gameState = GameState.Create(); 
+        var command = new LookCommand(new UserInputOutput(), gameState);
 
         // Act
         var result = command.Handles("LOOK");
@@ -24,14 +25,15 @@ public sealed class LookCommandTests
     {
         // Arrange
         var io = new TestInputOutput();
-        var command = new LookCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var command = new LookCommand(io, gameState);
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        var result = command.Execute("LOOK", gameState);
+        var result = command.Execute("LOOK", player);
 
         // Assert
-        var tavernInventoryCount = gameState.Player.Location.Inventory.Count;
+        var tavernInventoryCount = player.Location.Inventory.Count;
         Assert.IsTrue(result.IsHandled);
         Assert.IsFalse(result.RequestExit);
         Assert.AreEqual(8 + tavernInventoryCount, io.Outputs.Count); // Name, blank, desc, blank, "Exits:", exit, blank, "Inventory:", inventory

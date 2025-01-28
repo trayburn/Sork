@@ -25,10 +25,11 @@ public sealed class LaughCommandTests
         // Arrange
         var io = new TestInputOutput();
         var command = new LaughCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
-        command.Execute("LOL", gameState);
+        command.Execute("LOL", player);
 
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);
@@ -41,7 +42,8 @@ public sealed class LaughCommandTests
         // Arrange
         var io = new TestInputOutput();
         var command = new LaughCommand(io);
-        var gameState = GameState.Create(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom };
 
         // Act
         var result = command.Handles("lol");
