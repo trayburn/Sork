@@ -157,3 +157,10 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
 - Handling backspace via Extension methods on `string`
 - Allow for multiple players to connect to the game.
 
+### Homework
+- Fix the broken tests.
+
+## Lesson 10
+
+- See other players in the game.
+- Extend IInputOutput to handle multi-player communication.
