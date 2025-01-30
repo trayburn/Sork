@@ -164,3 +164,7 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
 
 - See other players in the game.
 - Extend IInputOutput to handle multi-player communication.
+
+### Homework
+- All emotes (sing, dance, whistle, etc) should output to all players.
+- Write tests for all that network communication.

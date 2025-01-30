@@ -13,7 +13,7 @@ public class DanceCommandTests
         var io = new TestInputOutput();
         var command = new DanceCommand(io);
         var gameState = GameState.Create();
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
         command.Execute("dance", player);
@@ -26,7 +26,7 @@ public class DanceCommandTests
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
     {
         // Arrange
-        var command = new DanceCommand(new UserInputOutput());
+        var command = new DanceCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("DANCE");
@@ -39,7 +39,7 @@ public class DanceCommandTests
     public void Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided()
     {
         // Arrange
-        var command = new DanceCommand(new UserInputOutput());
+        var command = new DanceCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("dance");

@@ -10,7 +10,7 @@ public sealed class TakeCommandTests
     public void Handle_ShouldReturnTrue_WhenInputIsCapitalized()
     {
         // Arrange
-        var command = new TakeCommand(new UserInputOutput());
+        var command = new TakeCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("TAKE sword");
@@ -26,7 +26,7 @@ public sealed class TakeCommandTests
         var io = new TestInputOutput();
         var command = new TakeCommand(io);
         var gameState = GameState.Create();
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
         var result = command.Execute("TAKE sword", player);
@@ -45,7 +45,7 @@ public sealed class TakeCommandTests
         var io = new TestInputOutput();
         var gameState = GameState.Create();
         var command = new TakeCommand(io);
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
         var result = command.Execute("TAKE candle", player);
@@ -65,7 +65,7 @@ public sealed class TakeCommandTests
         var io = new TestInputOutput();
         var command = new TakeCommand(io);
         var gameState = GameState.Create();
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
         var result = command.Execute("TAKE", player);

@@ -12,7 +12,7 @@ public sealed class WhistleCommandTests
         // Arrange
         var io = new TestInputOutput();
         var gameState = GameState.Create();
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
         var command = new WhistleCommand(io);
 
         // Act
@@ -27,7 +27,7 @@ public sealed class WhistleCommandTests
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
     {
         // Arrange
-        var command = new WhistleCommand(new UserInputOutput());
+        var command = new WhistleCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("WHISTLE");
@@ -40,7 +40,7 @@ public sealed class WhistleCommandTests
     public void Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided()
     {
         // Arrange
-        var command = new WhistleCommand(new UserInputOutput());
+        var command = new WhistleCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("whistle");

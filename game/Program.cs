@@ -37,7 +37,7 @@ public class Program
 
         io.WritePrompt("What is your name? ");
         string name = io.ReadInput();
-        var player = new Player { Name = name, Location = gameState.RootRoom };
+        var player = new Player { Name = name, Location = gameState.RootRoom, IO = io };
         gameState.Players.Add(player);
 
         do

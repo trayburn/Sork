@@ -14,7 +14,7 @@ public class MoveCommand : BaseCommand
     public override CommandResult Execute(string userInput, Player player)
     {
         var direction = GetParametersFromInput(userInput)[0].ToLower();
-        player.Location = player.Location.Exits[direction];
+        player.Location.MovePlayer(player, direction);
         io.WriteMessageLine($"You move to {player.Location.Name}.");
         return new CommandResult { RequestExit = false, IsHandled = true };
     }

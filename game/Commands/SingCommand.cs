@@ -12,6 +12,8 @@ public class SingCommand : BaseCommand
     {
         io.WriteNoun("You");
         io.WriteMessageLine(" sing!");
+        io.SpeakNoun(player.Name, player.Location);
+        io.SpeakMessageLine(" sings!", player.Location);
         return new CommandResult { RequestExit = false, IsHandled = true };
     }
 }

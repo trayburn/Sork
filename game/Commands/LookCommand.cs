@@ -34,7 +34,12 @@ public class LookCommand : BaseCommand
         {
             io.WriteMessageLine($"{item.Name} - {item.Description}");
         }
-
+        io.WriteMessageLine("");
+        io.WriteMessageLine("Players:");
+        foreach (var p in player.Location.Players)
+        {
+            io.WriteMessageLine($"{p.Name}");
+        }
 
         return new CommandResult { RequestExit = false, IsHandled = true };
     }

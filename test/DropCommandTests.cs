@@ -10,7 +10,7 @@ public class DropCommandTests
     public void Handles_ShouldReturnTrue_WhenInputIsDrop()
     {
         // Arrange
-        var command = new DropCommand(new UserInputOutput());
+        var command = new DropCommand(new TestInputOutput());
 
         // Act
         var result = command.Handles("drop sword");
@@ -26,7 +26,7 @@ public class DropCommandTests
         var io = new TestInputOutput();
         var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
 
         // Act
@@ -45,7 +45,7 @@ public class DropCommandTests
         var io = new TestInputOutput();
         var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
         var result = command.Execute("drop nonexistent", player);
@@ -63,7 +63,7 @@ public class DropCommandTests
         var io = new TestInputOutput();
         var gameState = GameState.Create();
         var command = new DropCommand(io);
-        var player = new Player { Name = "Test", Location = gameState.RootRoom };
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
         var sword = player.Location.Inventory.First(i => i.Name == "Sword");
         player.Location.Inventory.Remove(sword);
         player.Inventory.Add(sword);
