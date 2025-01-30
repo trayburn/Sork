@@ -17,11 +17,17 @@ public class DanceCommand : BaseCommand
         if (parameters.Length == 0) {
             io.WriteNoun("You");
             io.WriteMessageLine(" dance!"); 
+            io.SpeakNoun(player.Name, player.Location);
+            io.SpeakMessageLine(" dances!", player.Location);
         } else {
             io.WriteNoun("You");
             io.WriteMessage(" dance with ");
             io.WriteNoun(parameters[0]);
             io.WriteMessageLine("!"); 
+            io.SpeakNoun(player.Name, player.Location);
+            io.SpeakMessage(" dances with ", player.Location);
+            io.SpeakNoun(parameters[0], player.Location);
+            io.SpeakMessageLine("!", player.Location);
         }
         return new CommandResult { RequestExit = false, IsHandled = true }; 
     }

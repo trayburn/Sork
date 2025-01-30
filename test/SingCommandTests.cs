@@ -22,6 +22,8 @@ public sealed class SingCommandTests
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);
         Assert.AreEqual(" sing!", io.Outputs.Last());
+        Assert.AreEqual("Test", io.SpeakOutputs[gameState.RootRoom][0]);
+        Assert.AreEqual(" sings!", io.SpeakOutputs[gameState.RootRoom][1]);
     }
 
     [TestMethod]

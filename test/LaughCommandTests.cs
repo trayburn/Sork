@@ -34,6 +34,8 @@ public sealed class LaughCommandTests
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);
         Assert.AreEqual(" laugh out loud!", io.Outputs.Last());
+        Assert.AreEqual("Test", io.SpeakOutputs[gameState.RootRoom][0]);
+        Assert.AreEqual(" laughs out loud!", io.SpeakOutputs[gameState.RootRoom][1]);
     }
 
     [TestMethod]

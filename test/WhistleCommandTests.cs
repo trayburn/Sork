@@ -21,6 +21,8 @@ public sealed class WhistleCommandTests
         // Assert
         Assert.AreEqual("You", io.Outputs[0]);
         Assert.AreEqual(" whistle!", io.Outputs.Last());
+        Assert.AreEqual("Test", io.SpeakOutputs[gameState.RootRoom][0]);
+        Assert.AreEqual(" whistles!", io.SpeakOutputs[gameState.RootRoom][1]);
     }
 
     [TestMethod]

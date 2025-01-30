@@ -14,6 +14,8 @@ public class WhistleCommand : BaseCommand
     {
         io.WriteNoun("You");
         io.WriteMessageLine(" whistle!");
+        io.SpeakNoun(player.Name, player.Location);
+        io.SpeakMessageLine(" whistles!", player.Location);
         return new CommandResult { RequestExit = false, IsHandled = true };
     }
 }
