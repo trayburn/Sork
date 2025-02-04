@@ -7,7 +7,7 @@ public class SingCommand : BaseCommand
     {
         this.io = io;
     }
-    public override bool Handles(string userInput) => GetCommandFromInput(userInput) == "sing";
+    public override bool Handles(string userInput, Player player) => GetCommandFromInput(userInput) == "sing";
     public override CommandResult Execute(string userInput, Player player)
     {
         io.WriteNoun("You");

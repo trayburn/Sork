@@ -10,10 +10,14 @@ public sealed class LaughCommandTests
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
     {
         // Arrange
-        var command = new LaughCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new LaughCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
+
 
         // Act
-        var result = command.Handles("LOL");
+        var result = command.Handles("LOL", player);
 
         // Assert
         Assert.IsTrue(result);
@@ -48,7 +52,7 @@ public sealed class LaughCommandTests
         var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
 
         // Act
-        var result = command.Handles("lol");
+        var result = command.Handles("lol", player);
 
         // Assert
         Assert.IsTrue(result);

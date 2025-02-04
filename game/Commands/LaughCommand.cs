@@ -7,7 +7,7 @@ public class LaughCommand : BaseCommand
     {
         this.io = io;
     }
-    public override bool Handles(string userInput)
+    public override bool Handles(string userInput, Player player)
     {
         return GetCommandFromInput(userInput) == "lol";
     }

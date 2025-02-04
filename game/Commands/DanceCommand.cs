@@ -7,7 +7,7 @@ public class DanceCommand : BaseCommand
     {
         this.io = io;
     }
-    public override bool Handles(string userInput) {
+    public override bool Handles(string userInput, Player player) {
         var paramsLength = GetParametersFromInput(userInput).Length;
         return GetCommandFromInput(userInput) == "dance" && (paramsLength == 0 || paramsLength == 1);
     }

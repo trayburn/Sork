@@ -49,7 +49,7 @@ public class Program
             var handled = false;
             foreach (var command in commands)
             {
-                if (command.Handles(input)) 
+                if (command.Handles(input, player)) 
                 {
                     handled = true;
                     result = command.Execute(input, player);

@@ -29,10 +29,14 @@ public sealed class WhistleCommandTests
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
     {
         // Arrange
-        var command = new WhistleCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new WhistleCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
+
 
         // Act
-        var result = command.Handles("WHISTLE");
+        var result = command.Handles("WHISTLE", player);
 
         // Assert
         Assert.IsTrue(result);
@@ -42,10 +46,14 @@ public sealed class WhistleCommandTests
     public void Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided()
     {
         // Arrange
-        var command = new WhistleCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new WhistleCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };  
+
 
         // Act
-        var result = command.Handles("whistle");
+        var result = command.Handles("whistle", player);
 
         // Assert
         Assert.IsTrue(result);

@@ -10,10 +10,14 @@ public class DropCommandTests
     public void Handles_ShouldReturnTrue_WhenInputIsDrop()
     {
         // Arrange
-        var command = new DropCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new DropCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };  
+
 
         // Act
-        var result = command.Handles("drop sword");
+        var result = command.Handles("drop sword", player);
 
         // Assert
         Assert.IsTrue(result);

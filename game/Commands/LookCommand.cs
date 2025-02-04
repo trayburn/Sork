@@ -12,7 +12,7 @@ public class LookCommand : BaseCommand
         this.gameState = gameState;
     }
 
-    public override bool Handles(string userInput)
+    public override bool Handles(string userInput, Player player)
     {
         return GetCommandFromInput(userInput) == "look";
     }
@@ -26,11 +26,12 @@ public class LookCommand : BaseCommand
         io.WriteMessageLine("Exits:");
         foreach (var exit in player.Location.Exits)
         {
-            io.WriteMessageLine($"{exit.Key} - {exit.Value.Description}");
+            io.WriteMessageLine($"{exit.Name} - {exit.Description}");
         }
         io.WriteMessageLine("");
         io.WriteMessageLine("Inventory:");
         foreach (var item in player.Location.Inventory)
+
         {
             io.WriteMessageLine($"{item.Name} - {item.Description}");
         }

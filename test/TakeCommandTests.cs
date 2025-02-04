@@ -10,10 +10,14 @@ public sealed class TakeCommandTests
     public void Handle_ShouldReturnTrue_WhenInputIsCapitalized()
     {
         // Arrange
-        var command = new TakeCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new TakeCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
+
 
         // Act
-        var result = command.Handles("TAKE sword");
+        var result = command.Handles("TAKE sword", player);
 
         // Assert
         Assert.IsTrue(result);

@@ -168,3 +168,14 @@ For all other commands, except `MoveCommand` and `LookCommand`, write the follow
 ### Homework
 - All emotes (sing, dance, whistle, etc) should output to all players.
 - Write tests for all that network communication.
+
+## Lesson 11
+
+- Implement aliases for exits.
+- Remove the need to prefix a move command execution with `move`.
+
+### Homework
+- DO NOT WRITE THIS CODE YET
+- Build a plan for how we could have Aliases not just on Exits, but also on Commands, Items, etc.
+
+ 

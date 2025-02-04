@@ -16,8 +16,20 @@ public class GameState
         tavern.Inventory.Add(mug);
         tavern.Inventory.Add(sword);
 
-        tavern.Exits.Add("down", dungeon);
-        dungeon.Exits.Add("up", tavern);
+        tavern.Exits.Add(new Exit 
+        { 
+            Name = "Dungeon", 
+            Destination = dungeon, 
+            Aliases = { "d", "down", "do", "dow" } ,
+            Description="A path to the Dungeon"
+        });
+        dungeon.Exits.Add(new Exit 
+        { 
+            Name = "Tavern Door", 
+            Destination = tavern, 
+            Aliases = { "u", "up", "ladder" } ,
+            Description="A door to the Tavern above."
+        });
         
         return new GameState { RootRoom = tavern };
     }

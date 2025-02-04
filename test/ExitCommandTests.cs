@@ -26,10 +26,14 @@ public sealed class ExitCommandTests
     public void Handles_ShouldReturnTrue_WhenCapitalizedInputIsProvided()
     {
         // Arrange
-        var command = new ExitCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new ExitCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };
+
 
         // Act
-        var result = command.Handles("EXIT");
+        var result = command.Handles("EXIT", player);
 
         // Assert
         Assert.IsTrue(result);
@@ -39,10 +43,14 @@ public sealed class ExitCommandTests
     public void Handles_ShouldReturnTrue_WhenLowercaseInputIsProvided()
     {
         // Arrange
-        var command = new ExitCommand(new TestInputOutput());
+        var io = new TestInputOutput();
+        var command = new ExitCommand(io);
+        var gameState = GameState.Create();
+        var player = new Player { Name = "Test", Location = gameState.RootRoom, IO = io };  
+
 
         // Act
-        var result = command.Handles("exit");
+        var result = command.Handles("exit", player);
 
         // Assert
         Assert.IsTrue(result);

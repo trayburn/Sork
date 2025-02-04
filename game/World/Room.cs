@@ -4,14 +4,25 @@ public class Room
 {
     public required string Name { get; set; }
     public required string Description { get; set; }
-    public Dictionary<string, Room> Exits { get; } = new Dictionary<string, Room>();
+    public List<Exit> Exits { get; } = new();
     public List<Item> Inventory { get; } = new();
     public List<Player> Players { get; } = new();
 
-    public void MovePlayer(Player player, string direction)
+    public Exit? GetExit(string direction)
     {
-        var exit = Exits[direction];
-        Players.Remove(player);
-        player.Location = exit;
+        return Exits.FirstOrDefault(e => e.Name.ToLower() == direction.ToLower() || e.Aliases.Contains(direction.ToLower()));
     }
+
+    public bool MovePlayer(Player player, string direction)
+    {
+        var exit = GetExit(direction);
+        if (exit == null)
+        {
+            return false;
+        }
+        Players.Remove(player);
+        player.Location = exit.Destination;
+        return true;
+    }
+
 }

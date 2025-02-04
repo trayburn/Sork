@@ -2,7 +2,7 @@ namespace Sork.Commands;
 using Sork.World;
 public abstract class BaseCommand : ICommand
 {
-    public abstract bool Handles(string userInput);
+    public abstract bool Handles(string userInput, Player player);
     public abstract CommandResult Execute(string userInput, Player player);
 
     public string GetCommandFromInput(string userInput)

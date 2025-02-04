@@ -7,6 +7,6 @@ public class ExitCommand : BaseCommand
     {
         this.io = io;
     }
-    public override bool Handles(string userInput) => GetCommandFromInput(userInput) == "exit";
+    public override bool Handles(string userInput, Player player) => GetCommandFromInput(userInput) == "exit";
     public override CommandResult Execute(string userInput, Player player) => new CommandResult { RequestExit = true, IsHandled = true };
 }

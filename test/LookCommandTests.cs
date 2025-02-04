@@ -11,10 +11,13 @@ public sealed class LookCommandTests
     {
         // Arrange
         var gameState = GameState.Create(); 
-        var command = new LookCommand(new TestInputOutput(), gameState);
+        var io = new TestInputOutput();
+        var command = new LookCommand(io, gameState);
+        var player = new Player { Name = "Test Player", Location = gameState.RootRoom, IO = io };
+
 
         // Act
-        var result = command.Handles("LOOK");
+        var result = command.Handles("LOOK", player);
 
         // Assert
         Assert.IsTrue(result);
@@ -42,7 +45,7 @@ public sealed class LookCommandTests
         Assert.AreEqual("You are in the Tavern.", io.Outputs[2]);
         Assert.AreEqual("", io.Outputs[3]);
         Assert.AreEqual("Exits:", io.Outputs[4]);
-        Assert.AreEqual("down - You are in the dungeon.", io.Outputs[5]);
+        Assert.AreEqual("Dungeon - A path to the Dungeon", io.Outputs[5]);
         Assert.AreEqual("", io.Outputs[6]);
         Assert.AreEqual("Inventory:", io.Outputs[7]);      
         Assert.IsTrue(io.Outputs.Skip(7).Any(o => o == "Mug - A mug."));
